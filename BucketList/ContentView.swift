@@ -7,9 +7,20 @@
 
 import SwiftUI
 
+enum LoadingState {
+    case loading, success, failed
+}
+
 struct LoadingView: View {
+    @Binding var state: LoadingState
+    
     var body: some View {
         Text("Loading...")
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    state = .success
+                }
+            }
     }
 }
 
@@ -26,21 +37,13 @@ struct FailedView: View {
 }
 
 struct ContentView: View {
-    enum LoadingState {
-        case loading, success, failed
-    }
-    
-    var loadingState = LoadingState.loading
+    @State private var loadingState = LoadingState.loading
     
     var body: some View {
-        Group {
-            if loadingState == .loading {
-                LoadingView()
-            } else if loadingState == .success {
-                SuccessView()
-            } else if loadingState == .failed {
-                FailedView()
-            }
+        switch loadingState {
+        case .loading: LoadingView(state: $loadingState)
+        case .success: SuccessView()
+        case .failed: FailedView()
         }
     }
 }
@@ -50,3 +53,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
