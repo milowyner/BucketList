@@ -7,12 +7,18 @@
 
 import SwiftUI
 
+extension FileManager {
+    static var documentDirectory: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .onTapGesture {
                 let str = "Test Message"
-                let url = getDocumentsDirectory().appendingPathComponent("message.txt")
+                let url = FileManager.documentDirectory.appendingPathComponent("message.txt")
                 
                 do {
                     try str.write(to: url, atomically: true, encoding: .utf8)
@@ -22,14 +28,6 @@ struct ContentView: View {
                     print(error.localizedDescription)
                 }
             }
-    }
-    
-    func getDocumentsDirectory() -> URL {
-        // find all possible documents directories for this user
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-
-        // just send back the first one, which ought to be the only one
-        return paths[0]
     }
 }
 
