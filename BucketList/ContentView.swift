@@ -33,8 +33,9 @@ struct ContentView: View {
                         newLocation.title = "Example location"
                         newLocation.coordinate = centerCoordinate
                         locations.append(newLocation)
+                        
                         selectedPlace = newLocation
-                        showingPlaceDetails = true
+                        showingEditScreen = true
                     }) {
                         Image(systemName: "plus")
                     }
