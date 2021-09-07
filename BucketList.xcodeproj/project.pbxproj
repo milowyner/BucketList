@@ -16,6 +16,7 @@
 		054B00EC26E6B56400E5EE5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B00EB26E6B56400E5EE5B /* MapView.swift */; };
 		05D502E726E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D502E626E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift */; };
 		05D502E926E6E97D00781F39 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D502E826E6E97D00781F39 /* EditView.swift */; };
+		05D5030B26E7E3DF00781F39 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5030A26E7E3DF00781F39 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		054B00EB26E6B56400E5EE5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		05D502E626E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
 		05D502E826E6E97D00781F39 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		05D5030A26E7E3DF00781F39 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				054B00D926E68BCC00E5EE5B /* ContentView.swift */,
 				054B00EB26E6B56400E5EE5B /* MapView.swift */,
 				05D502E826E6E97D00781F39 /* EditView.swift */,
+				05D5030A26E7E3DF00781F39 /* Result.swift */,
 				05D502E626E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift */,
 				054B00DB26E68BCE00E5EE5B /* Assets.xcassets */,
 				054B00E026E68BCE00E5EE5B /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 				054B00EC26E6B56400E5EE5B /* MapView.swift in Sources */,
 				05D502E926E6E97D00781F39 /* EditView.swift in Sources */,
 				054B00D826E68BCC00E5EE5B /* SceneDelegate.swift in Sources */,
+				05D5030B26E7E3DF00781F39 /* Result.swift in Sources */,
 				05D502E726E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift in Sources */,
 				054B00DA26E68BCC00E5EE5B /* ContentView.swift in Sources */,
 			);
