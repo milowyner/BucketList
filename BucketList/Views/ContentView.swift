@@ -10,7 +10,7 @@ import MapKit
 
 struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
-    @State private var locations = [MKPointAnnotation]()
+    @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
@@ -29,7 +29,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let newLocation = MKPointAnnotation()
+                        let newLocation = CodableMKPointAnnotation()
                         newLocation.title = "Example location"
                         newLocation.coordinate = centerCoordinate
                         locations.append(newLocation)
@@ -53,11 +53,36 @@ struct ContentView: View {
                 showingEditScreen = true
             })
         }
-        .sheet(isPresented: $showingEditScreen) {
+        .sheet(isPresented: $showingEditScreen, onDismiss: saveData) {
             if selectedPlace != nil {
                 EditView(placemark: selectedPlace!)
             }
         }
+        .onAppear(perform: loadData)
+    }
+    
+    func loadData() {
+        do {
+            let url = getDocumentsDirectory().appendingPathComponent("SavedPlaces")
+            let data = try Data(contentsOf: url)
+            locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func saveData() {
+        do {
+            let url = getDocumentsDirectory().appendingPathComponent("SavedPlaces")
+            let data = try JSONEncoder().encode(locations)
+            try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 }
 
