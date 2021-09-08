@@ -42,14 +42,14 @@ struct ContentView: View {
                             showingEditScreen = true
                         }) {
                             Image(systemName: "plus")
+                                .padding()
+                                .background(Color.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
                         }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
                     }
+                    .padding(.trailing)
                 }
             } else {
                 Button("Unlock Places") {
