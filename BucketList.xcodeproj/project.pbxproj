@@ -18,6 +18,7 @@
 		05D502E926E6E97D00781F39 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D502E826E6E97D00781F39 /* EditView.swift */; };
 		05D5030B26E7E3DF00781F39 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5030A26E7E3DF00781F39 /* Result.swift */; };
 		05D5030F26E7F35D00781F39 /* MKPointAnnotation-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5030E26E7F35D00781F39 /* MKPointAnnotation-Codable.swift */; };
+		05D5031726E9616400781F39 /* AddPlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D5031626E9616400781F39 /* AddPlacesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		05D502E826E6E97D00781F39 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		05D5030A26E7E3DF00781F39 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		05D5030E26E7F35D00781F39 /* MKPointAnnotation-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-Codable.swift"; sourceTree = "<group>"; };
+		05D5031626E9616400781F39 /* AddPlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlacesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				054B00D926E68BCC00E5EE5B /* ContentView.swift */,
+				05D5031626E9616400781F39 /* AddPlacesView.swift */,
 				054B00EB26E6B56400E5EE5B /* MapView.swift */,
 				05D502E826E6E97D00781F39 /* EditView.swift */,
 			);
@@ -181,6 +184,7 @@
 				05D502E926E6E97D00781F39 /* EditView.swift in Sources */,
 				054B00D826E68BCC00E5EE5B /* SceneDelegate.swift in Sources */,
 				05D5030B26E7E3DF00781F39 /* Result.swift in Sources */,
+				05D5031726E9616400781F39 /* AddPlacesView.swift in Sources */,
 				05D502E726E6E07F00781F39 /* MKPointAnnotation-ObservableObject.swift in Sources */,
 				05D5030F26E7F35D00781F39 /* MKPointAnnotation-Codable.swift in Sources */,
 				054B00DA26E68BCC00E5EE5B /* ContentView.swift in Sources */,
