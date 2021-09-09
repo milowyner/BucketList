@@ -7,7 +7,7 @@
 
 import MapKit
 
-extension MKPointAnnotation: ObservableObject {
+extension MKPointAnnotation: ObservableObject, Identifiable {
     public var wrappedTitle: String {
         get {
             self.title ?? "Unknown value"

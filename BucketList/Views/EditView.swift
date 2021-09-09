@@ -67,10 +67,10 @@ struct EditView: View {
                     loadingState = .loaded
                     return
                 } catch {
-                    print(error.localizedDescription)
+                    print("Error decoding data from Wikipedia:", error.localizedDescription)
                 }
             } else if let error = error {
-                print(error.localizedDescription)
+                print("Error fetching data from Wikipedia:", error.localizedDescription)
             }
             
             loadingState = .failed

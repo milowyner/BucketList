@@ -11,13 +11,12 @@ import MapKit
 struct AddPlacesView: View {
     @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
-    @State private var showingPlaceDetails = false
     @State private var showingEditScreen = false
     @State private var centerCoordinate = CLLocationCoordinate2D()
     
     var body: some View {
         ZStack {
-            MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: locations)
+            MapView(centerCoordinate: $centerCoordinate, selectedPlace: $selectedPlace, annotations: locations)
                 .edgesIgnoringSafeArea(.all)
             Circle()
                 .fill(Color.blue)
@@ -36,7 +35,6 @@ struct AddPlacesView: View {
                         locations.append(newLocation)
                         
                         selectedPlace = newLocation
-                        showingEditScreen = true
                     }) {
                         Image(systemName: "plus")
                             .padding()
@@ -49,15 +47,8 @@ struct AddPlacesView: View {
                 .padding(.trailing)
             }
         }
-        .alert(isPresented: $showingPlaceDetails) {
-            Alert(title: Text(selectedPlace?.title ?? "Unknown"), message: Text(selectedPlace?.subtitle ?? "Missing place information."), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("Edit")) {
-                showingEditScreen = true
-            })
-        }
-        .sheet(isPresented: $showingEditScreen, onDismiss: saveData) {
-            if selectedPlace != nil {
-                EditView(placemark: selectedPlace!)
-            }
+        .sheet(item: $selectedPlace, onDismiss: saveData) { place in
+            EditView(placemark: place)
         }
         .onAppear(perform: loadData)
     }
@@ -68,7 +59,7 @@ struct AddPlacesView: View {
             let data = try Data(contentsOf: url)
             locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
         } catch {
-            print(error.localizedDescription)
+            print("Error loading data:", error.localizedDescription)
         }
     }
     
@@ -78,7 +69,7 @@ struct AddPlacesView: View {
             let data = try JSONEncoder().encode(locations)
             try data.write(to: url, options: [.atomicWrite, .completeFileProtection])
         } catch {
-            print(error.localizedDescription)
+            print("Error saving data:", error.localizedDescription)
         }
     }
     
