@@ -10,6 +10,7 @@ import LocalAuthentication
 
 struct ContentView: View {
     @State private var isUnlocked = false
+    @State private var showingError = false
     
     var body: some View {
         Group {
@@ -25,6 +26,9 @@ struct ContentView: View {
                 .clipShape(Capsule())
             }
         }
+        .alert(isPresented: $showingError, content: {
+            Alert(title: Text("Face ID or Touch ID Required"), message: Text("Please enable Face ID or Touch ID and try again."))
+        })
     }
     
     func authenticate() {
@@ -39,12 +43,14 @@ struct ContentView: View {
                     if success {
                         isUnlocked = true
                     } else {
-                        // error
+                        print("Authentication error:", authenticationError?.localizedDescription ?? "Unknown error")
+                        showingError = true
                     }
                 }
             }
         } else {
-            // no biometrics
+            print("Biometric evaluation error:", error?.localizedDescription ?? "Unknown error")
+            showingError = true
         }
     }
 }
