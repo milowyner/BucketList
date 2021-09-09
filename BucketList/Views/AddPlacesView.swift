@@ -29,8 +29,6 @@ struct AddPlacesView: View {
                     Spacer()
                     Button(action: {
                         let newLocation = CodableMKPointAnnotation()
-                        newLocation.title = "Example location"
-                        newLocation.subtitle = "Example description"
                         newLocation.coordinate = centerCoordinate
                         locations.append(newLocation)
                         
@@ -47,8 +45,8 @@ struct AddPlacesView: View {
                 .padding(.trailing)
             }
         }
-        .sheet(item: $selectedPlace, onDismiss: saveData) { place in
-            EditView(placemark: place)
+        .sheet(item: $selectedPlace) { place in
+            EditView(placemark: place, onDisappear: saveData)
         }
         .onAppear(perform: loadData)
     }

@@ -10,7 +10,7 @@ import MapKit
 extension MKPointAnnotation: ObservableObject, Identifiable {
     public var wrappedTitle: String {
         get {
-            self.title ?? "Unknown value"
+            self.title ?? ""
         }
 
         set {
@@ -20,7 +20,7 @@ extension MKPointAnnotation: ObservableObject, Identifiable {
 
     public var wrappedSubtitle: String {
         get {
-            self.subtitle ?? "Unknown value"
+            self.subtitle ?? ""
         }
 
         set {

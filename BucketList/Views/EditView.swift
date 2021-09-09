@@ -15,6 +15,8 @@ struct EditView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var placemark: MKPointAnnotation
+    let onDisappear: (() -> Void)
+    
     @State private var loadingState = LoadingState.loading
     @State private var pages = [Page]()
 
@@ -47,6 +49,13 @@ struct EditView: View {
                 self.presentationMode.wrappedValue.dismiss()
             })
             .onAppear(perform: fetchNearbyPlaces)
+            .onDisappear {
+                // give the placemark a title if empty, because MapKit doesn't show callouts for pins that don't have titles
+                if placemark.wrappedTitle.isEmpty {
+                    placemark.title = "Untitled Place"
+                }
+                onDisappear()
+            }
         }
     }
     
@@ -80,6 +89,6 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(placemark: MKPointAnnotation.example)
+        EditView(placemark: MKPointAnnotation.example, onDisappear: {})
     }
 }
